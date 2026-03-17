@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:skip-bindings": "vite build && pnpm copy:env",
-    "build": "vite build && pnpm copy:env",
-    "copy:env": "node ../../scripts/copy-env.js",
+    "build:skip-bindings": "vite build && npm run copy:env",
+    "build": "vite build && npm run copy:env",
+    "copy:env": "node ./scripts/copy-env.js",
     "typecheck": "tsc --noEmit --incremental --tsBuildInfoFile node_modules/.cache/tsconfig.tsbuildinfo --pretty",
     "check": "biome check src",
     "fix": "biome check --write src"
