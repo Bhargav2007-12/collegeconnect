@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Advisors from "@/components/Advisors";
 import { ArrowRight, BookOpen, Star } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
@@ -173,6 +174,7 @@ export default function AdvisorsSection() {
     backendAdvisors && backendAdvisors.length > 0
       ? backendAdvisors
       : SAMPLE_ADVISORS;
+  const [filteredAdvisors, setFilteredAdvisors] = useState<Advisor[]>(advisors);
 
   return (
     <section
@@ -211,9 +213,11 @@ export default function AdvisorsSection() {
           </p>
         </motion.div>
 
+        <Advisors advisors={advisors} onFiltered={setFilteredAdvisors} />
+
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {advisors.slice(0, 6).map((advisor, i) => (
+          {filteredAdvisors.slice(0, 6).map((advisor, i) => (
             <AdvisorCard
               key={
                 "id" in advisor

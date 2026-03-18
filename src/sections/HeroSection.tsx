@@ -1,20 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ArrowRight, Search, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { motion } from "motion/react";
-import { useState } from "react";
 
 export default function HeroSection() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [focused, setFocused] = useState(false);
-
-  const handleSearch = () => {
-    if (searchQuery.trim()) {
-      const el = document.querySelector("#advisors");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const headline = "Talk to Real College Students";
   const headline2 = "Before Choosing Your College";
 
@@ -112,71 +99,6 @@ export default function HeroSection() {
             before you commit to a college.
           </span>
         </motion.p>
-
-        {/* Search bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="relative max-w-xl mx-auto mb-8"
-        >
-          <div
-            className={`relative glass rounded-2xl transition-all duration-300 ${
-              focused ? "neon-border-teal" : "border border-border"
-            }`}
-          >
-            <Search
-              size={18}
-              className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
-                focused ? "text-neon-teal" : "text-muted-foreground"
-              }`}
-            />
-            <Input
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder="Search by college or branch..."
-              className="bg-transparent border-0 pl-11 pr-4 py-4 h-14 text-base rounded-2xl focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-muted-foreground/60"
-              data-ocid="hero.search_input"
-            />
-          </div>
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="flex flex-col sm:flex-row gap-3 justify-center items-center"
-        >
-          <Button
-            onClick={handleSearch}
-            size="lg"
-            className="bg-neon-orange hover:bg-neon-orange/90 text-background font-bold px-8 py-4 h-14 rounded-xl text-base glow-orange hover:shadow-neon-orange transition-all duration-300 group"
-            data-ocid="hero.primary_button"
-          >
-            Find Your Advisor
-            <ArrowRight
-              size={18}
-              className="ml-2 group-hover:translate-x-1 transition-transform"
-            />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() =>
-              document
-                .querySelector("#how-it-works")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="border-border hover:border-neon-teal/50 text-foreground hover:text-neon-teal bg-transparent px-8 py-4 h-14 rounded-xl text-base transition-all duration-300"
-            data-ocid="hero.secondary_button"
-          >
-            How It Works
-          </Button>
-        </motion.div>
 
         {/* Stats row */}
         <motion.div
